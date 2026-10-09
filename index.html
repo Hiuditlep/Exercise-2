@@ -3,6 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <title>Mini React Engine</title>
+    <style>
+      .skeleton-line {
+        height: 20px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        animation: pulse 1.5s infinite ease-in-out;
+      }
+      .skeleton-line.short {
+        width: 70%;
+      }
+      @keyframes pulse {
+        0% {
+          background-color: #e0e0e0;
+        }
+        50% {
+          background-color: #c0c0c0;
+        }
+        100% {
+          background-color: #e0e0e0;
+        }
+      }
+      .error-text {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
     <!-- Điểm gắn kết (mount point) của ứng dụng -->
