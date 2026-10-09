@@ -47,3 +47,31 @@ export function attachRootListener(rootDom) {
     console.log("[Delegation Hub] Có thao tác click từ:", e.target.tagName);
   });
 }
+// Ứng dụng TaskApp
+export function TaskApp() {
+  const [tasks, setTasks] = useState(["Review PR", "Verify AST"]);
+  const [filter, setFilter] = useState("ALL");
+
+  return createElement(
+    "main",
+    { className: "app-container" },
+    createElement(
+      "header",
+      null,
+      createElement("h2", null, `Tasks: ${tasks.length}`),
+    ),
+    // Nút thêm task kích hoạt setState
+    createElement(
+      "button",
+      {
+        onClick: () => setTasks([...tasks, `Task ${Date.now()}`]),
+      },
+      "Add Task",
+    ),
+    createElement(
+      "ul",
+      null,
+      ...tasks.map((task) => createElement("li", null, task)),
+    ),
+  );
+}
