@@ -17,21 +17,15 @@ const fetchFeed = () => {
 };
 
 export function DataFeed() {
-  // Quản lý 4 trạng thái: IDLE, LOADING, SUCCESS, ERROR
+  // ĐẢM BẢO 1: Khởi tạo đúng cấu trúc object
   const [state, setState] = useState({ status: "IDLE" });
 
   const loadData = async () => {
-    setState({ status: "LOADING" });
-    try {
-      const items = await fetchFeed();
-      setState({ status: "SUCCESS", data: items });
-    } catch (err) {
-      setState({ status: "ERROR", error: err.message });
-    }
+    /* ... */
   };
 
-  // Render giao diện theo từng trạng thái (Finite State Machine)
   if (state.status === "IDLE") {
+    // ĐẢM BẢO 2: Bắt buộc phải có chữ "return" ở đây
     return createElement(
       "div",
       { className: "idle-state" },
@@ -41,6 +35,7 @@ export function DataFeed() {
   }
 
   if (state.status === "LOADING") {
+    // ĐẢM BẢO 2: Bắt buộc phải có chữ "return" ở đây
     return createElement(
       "div",
       { className: "skeleton-container" },
