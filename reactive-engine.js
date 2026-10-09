@@ -29,3 +29,21 @@ export function useState(initialState) {
   stateCursor++;
   return [stateStore[currentCursor], setState];
 }
+// Hàm render chính của ứng dụng
+export function renderApp(Component, container) {
+  rootComponent = Component;
+  rootElement = container;
+
+  resetCursor(); // Bắt buộc phải reset trước khi gọi Component()
+  const vnode = Component();
+
+  container.innerHTML = ""; // Xóa giao diện cũ
+  container.appendChild(renderToDOM(vnode)); // Vẽ giao diện mới
+}
+
+// Bắt sự kiện tập trung tại thẻ cha
+export function attachRootListener(rootDom) {
+  rootDom.addEventListener("click", (e) => {
+    console.log("[Delegation Hub] Có thao tác click từ:", e.target.tagName);
+  });
+}
